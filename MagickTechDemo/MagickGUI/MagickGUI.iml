@@ -10,16 +10,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../Java/Miglayout-Sources/miglayout-3.7.4.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../Other/im4java-1.4.0/im4java-1.4.0-1.5.jar!/" />
+          <root url="jar://$USER_HOME$/Desktop/Coding/CSC420/im4java-1.4.0-1.5.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

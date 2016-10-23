@@ -22,9 +22,9 @@ public class MagickGuiDisplay extends JPanel
     private JButton rotateButton;
     private CenterScreen centerScreen;
 
+
     public MagickGuiDisplay()
     {
-
         try {
             // Set cross-platform look: "Nimbus"
             UIManager.setLookAndFeel(UIManager.getInstalledLookAndFeels()[1].getClassName());
