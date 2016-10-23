@@ -9,13 +9,18 @@ import javax.swing.*;
  */
 public class CropComponent extends ToolComponent
 {
-    private JButton button;
+    private static final String WRAP_GROW_STRING = "wrap, growx";
+
+    private JButton cropButton;
+    private JButton resizeButton;
 
     public CropComponent()
     {
         setLayout(new MigLayout());
-        button = new JButton("Click me!");
+        cropButton = new JButton("Crop");
+        resizeButton = new JButton("Resize");
 
-        add(button);
+        add(cropButton, WRAP_GROW_STRING);
+        add(resizeButton, WRAP_GROW_STRING);
     }
 }

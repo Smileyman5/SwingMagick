@@ -21,10 +21,11 @@ public class MagickGuiDisplay extends JPanel
         String myPath="C:\\Program Files (x86)\\ImageMagick-6.3.9-Q8";
         ProcessStarter.setGlobalSearchPath(myPath);
 
-        setLayout(new MigLayout("", "[][grow]", "[][grow]"));
+        setLayout(new MigLayout("", "[][grow]", "[][][grow]"));
 
         add(new JButton("File Menu"), "span, growx");
-        add(new ToolPallet(), "growy");
-        add(new JButton("Center Stage"), "grow");
+        add(new ToolPallet(), "spany, growy");
+        add(new JButton("Properties menu"), "growx, cell 1 1");
+        add(new JButton("Center Stage"), "grow, cell 1 2");
     }
 }
