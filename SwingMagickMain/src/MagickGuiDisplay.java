@@ -1,3 +1,4 @@
+import net.miginfocom.swing.MigLayout;
 import org.im4java.process.ProcessStarter;
 
 import javax.swing.*;
@@ -19,5 +20,11 @@ public class MagickGuiDisplay extends JPanel
         }
         String myPath="C:\\Program Files (x86)\\ImageMagick-6.3.9-Q8";
         ProcessStarter.setGlobalSearchPath(myPath);
+
+        setLayout(new MigLayout("", "[][grow]", "[][grow]"));
+
+        add(new JButton("File Menu"), "span, growx");
+        add(new ToolPallet(), "growy");
+        add(new JButton("Center Stage"), "grow");
     }
 }
