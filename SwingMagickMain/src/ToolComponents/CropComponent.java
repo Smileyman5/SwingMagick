@@ -13,14 +13,20 @@ public class CropComponent extends ToolComponent
 
     private JButton cropButton;
     private JButton resizeButton;
+    private JButton flipButton;
+    private JButton rotateButton;
 
     public CropComponent()
     {
         setLayout(new MigLayout());
         cropButton = new JButton("Crop");
         resizeButton = new JButton("Resize");
+        flipButton = new JButton("Flip");
+        rotateButton = new JButton("Rotate");
 
         add(cropButton, WRAP_GROW_STRING);
         add(resizeButton, WRAP_GROW_STRING);
+        add(flipButton, WRAP_GROW_STRING);
+        add(rotateButton, WRAP_GROW_STRING);
     }
 }
