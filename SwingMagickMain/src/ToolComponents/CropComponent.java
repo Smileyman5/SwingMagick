@@ -1,5 +1,6 @@
 package ToolComponents;
 
+import ToolComponents.CustomComponents.CustomButton;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -9,12 +10,14 @@ import javax.swing.*;
  */
 public class CropComponent extends ToolComponent
 {
-    private JButton cropButton;
+    private CustomButton cropButton;
 
     public CropComponent()
     {
-        setLayout(new MigLayout("", "[grow]", "[]"));
-        cropButton = new JButton("Crop");
-        add(cropButton, "growx");
+        setLayout(new MigLayout());
+        cropButton = new CustomButton("./out/images/crop.png");
+        cropButton.setRolloverIcon(new ImageIcon("./out/images/crop-hover.png"));
+        cropButton.setPressedIcon(new ImageIcon("./out/images/crop-clicked.png"));
+        add(cropButton);
     }
 }

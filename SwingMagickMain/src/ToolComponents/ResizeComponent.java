@@ -1,20 +1,19 @@
 package ToolComponents;
 
+import ToolComponents.CustomComponents.CustomButton;
 import net.miginfocom.swing.MigLayout;
-
-import javax.swing.*;
 
 /**
  * Created by alex on 10/25/2016.
  */
 public class ResizeComponent extends ToolComponent
 {
-    private JButton resizeButton;
+    private CustomButton resizeButton;
 
     public ResizeComponent()
     {
-        setLayout(new MigLayout("", "[grow]", "[]"));
-        resizeButton = new JButton("Resize");
-        add(resizeButton, "growx");
+        setLayout(new MigLayout());
+        resizeButton = new CustomButton("./out/images/resize.png");
+        add(resizeButton);
     }
 }

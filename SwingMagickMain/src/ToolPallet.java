@@ -17,7 +17,7 @@ public class ToolPallet extends JPanel
 
     public ToolPallet()
     {
-        setLayout(new MigLayout());
+        setLayout(new MigLayout("", "[grow]", ""));
         toolComponents.add(new CropComponent());
         toolComponents.add(new ResizeComponent());
         for (ToolComponent component: toolComponents)
