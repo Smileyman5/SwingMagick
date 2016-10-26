@@ -1,6 +1,4 @@
-import ToolComponents.CropComponent;
-import ToolComponents.ResizeComponent;
-import ToolComponents.ToolComponent;
+import ToolComponents.*;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -23,6 +21,8 @@ public class ToolPallet extends JPanel
         setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
         toolComponents.add(new CropComponent());
         toolComponents.add(new ResizeComponent());
+        toolComponents.add(new RotateComponent());
+        toolComponents.add(new FlipComponent());
         for (ToolComponent component: toolComponents)
             add(component, WRAP_GROW_STRING);
     }

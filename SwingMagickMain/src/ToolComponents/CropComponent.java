@@ -20,17 +20,10 @@ public class CropComponent extends ToolComponent
     public CropComponent()
     {
         setLayout(new MigLayout());
-        resizeButton = new JButton("Resize");
-        flipButton = new JButton("Flip");
-        rotateButton = new JButton("Rotate");
-
-        add(cropButton, WRAP_GROW_STRING);
-        add(resizeButton, WRAP_GROW_STRING);
-        add(flipButton, WRAP_GROW_STRING);
-        add(rotateButton, WRAP_GROW_STRING);
         cropButton = new CustomButton("./out/images/crop.png");
         cropButton.setRolloverIcon(new ImageIcon("./out/images/crop-hover.png"));
         cropButton.setPressedIcon(new ImageIcon("./out/images/crop-clicked.png"));
         add(cropButton);
+        cropButton.setToolTipText("Crop the image into a rectangular region.");
     }
 }
