@@ -26,7 +26,7 @@ public class Main
         // mainPanel is where all visuals will take place
         frame.setContentPane(new MagickGuiDisplay());
         // Set preferred size of screen
-        frame.setPreferredSize(new Dimension(500, 500));
+        frame.setPreferredSize(new Dimension(700, 700));
         // Packing...
         frame.pack();
         // Display!

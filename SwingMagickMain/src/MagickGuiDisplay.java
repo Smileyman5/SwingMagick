@@ -2,6 +2,7 @@ import net.miginfocom.swing.MigLayout;
 import org.im4java.process.ProcessStarter;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by alex on 10/23/2016.
@@ -21,11 +22,12 @@ public class MagickGuiDisplay extends JPanel
         String myPath="C:\\Program Files (x86)\\ImageMagick-6.3.9-Q8";
         ProcessStarter.setGlobalSearchPath(myPath);
 
+        setBackground(Color.LIGHT_GRAY);
         setLayout(new MigLayout("", "[][grow]", "[][][grow]"));
 
         add(new JButton("File Menu"), "span, growx");
         add(new ToolPallet(), "spany, growy");
         add(new JButton("Properties menu"), "growx, cell 1 1");
-        add(new JButton("Center Stage"), "grow, cell 1 2");
+        add(new CenterStage(), "grow, cell 1 2");
     }
 }

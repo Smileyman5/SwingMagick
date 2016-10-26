@@ -4,6 +4,7 @@ import ToolComponents.ToolComponent;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -18,6 +19,8 @@ public class ToolPallet extends JPanel
     public ToolPallet()
     {
         setLayout(new MigLayout("", "[grow]", ""));
+        setBackground(Color.WHITE);
+        setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
         toolComponents.add(new CropComponent());
         toolComponents.add(new ResizeComponent());
         for (ToolComponent component: toolComponents)
