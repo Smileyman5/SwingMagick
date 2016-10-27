@@ -3,6 +3,9 @@ import org.im4java.process.ProcessStarter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
 /**
  * Created by alex on 10/23/2016.
@@ -44,17 +47,22 @@ public class MagickGuiDisplay extends JPanel
         menu = new JMenu("File");
         menuBar.add(menu);
         menuItem = new JMenuItem("Open");
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
         menu.add(menuItem); //note: before defining the next menu item, define its action listener.
         menuItem = new JMenuItem("Save");
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
         menu.add(menuItem);
         menu.addSeparator();
         menuItem = new JMenuItem("Exit");
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
         menu.add(menuItem);
         menu = new JMenu("Edit");
         menuBar.add(menu);
         menuItem = new JMenuItem("Undo");
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK));
         menu.add(menuItem);
         menuItem = new JMenuItem("Redo");
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK+ InputEvent.SHIFT_MASK));
         menu.add(menuItem);
         menu = new JMenu("View");
         menuBar.add(menu);
