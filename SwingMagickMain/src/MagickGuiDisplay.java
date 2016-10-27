@@ -4,14 +4,18 @@ import org.im4java.process.ProcessStarter;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 /**
  * Created by alex on 10/23/2016.
  */
 public class MagickGuiDisplay extends JPanel
 {
+    private CenterStage stage;
+
     public MagickGuiDisplay()
     {
         try {
@@ -31,7 +35,8 @@ public class MagickGuiDisplay extends JPanel
         add(buildJMenuBar(), "span, growx");
         add(new ToolPallet(), "spany, growy");
         add(new PropertiesPanel(), "growx, cell 1 1");
-        add(new CenterStage(), "grow, cell 1 2");
+        stage = new CenterStage();
+        add(stage, "grow, cell 1 2");
     }
 
     private JMenuBar buildJMenuBar() {
@@ -47,6 +52,18 @@ public class MagickGuiDisplay extends JPanel
         menu = new JMenu("File");
         menuBar.add(menu);
         menuItem = new JMenuItem("Open");
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                JFileChooser fc = new JFileChooser();
+                int returnVal = fc.showOpenDialog(MagickGuiDisplay.this);
+
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    File file = fc.getSelectedFile();
+                    stage.setDisplayedImage(file);
+                }
+            }
+        });
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
         menu.add(menuItem); //note: before defining the next menu item, define its action listener.
         menuItem = new JMenuItem("Save");

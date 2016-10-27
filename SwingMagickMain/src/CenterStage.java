@@ -3,6 +3,7 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 /**
  * Created by alex on 10/26/2016.
@@ -40,5 +41,15 @@ public class CenterStage extends JPanel
         setLayout(new MigLayout("", "[grow]", "[grow][]"));
         add (new JScrollPane(imageHolder), "grow, wrap");
         add (new CenterStageProperties(), "growx");
+    }
+
+    /**
+     * Takes a requested image file and displays it on the stage
+     * @param file The file being viewed
+     */
+    public void setDisplayedImage(File file) {
+        image = new ImageIcon(file.getAbsolutePath());
+        imageLabel.setIcon(image);
+        imageLabel.setPreferredSize(new Dimension(image.getIconWidth() + 20, image.getIconHeight() + 20));
     }
 }
