@@ -24,7 +24,7 @@ public class CenterStage extends JPanel
 
         imageLabel = new JLabel(image, JLabel.CENTER);
         imageLabel.setBackground(Color.DARK_GRAY);
-        imageLabel.setPreferredSize(new Dimension(image.getIconWidth() + 20, image.getIconHeight() + 20));
+        imageLabel.setPreferredSize(new Dimension(image.getIconWidth(), image.getIconHeight()));
 //        image2 = new JLabel();
 //        image2.setBackground(Color.WHITE);
 //        image2.setIcon(new ImageIcon("./out/images/crop.png"));

@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3aa86c9-c802-4efa-916d-fa71ba7dc824" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SwingMagick/CenterStageComponents/CenterStageProperties.class" afterPath="$PROJECT_DIR$/out/production/SwingMagick/CenterStageComponents/CenterStageProperties.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SwingMagick/CenterStage.class" afterPath="$PROJECT_DIR$/out/production/SwingMagick/CenterStage.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CenterStage.java" afterPath="$PROJECT_DIR$/src/CenterStage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CenterStageComponents/CenterStageProperties.java" afterPath="$PROJECT_DIR$/src/CenterStageComponents/CenterStageProperties.java" />
     </list>
@@ -61,11 +62,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CenterStage.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CenterStage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CenterStage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9918963">
-              <caret line="41" column="73" selection-start-line="41" selection-start-column="73" selection-end-line="41" selection-end-column="73" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CenterStageProperties.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/CenterStageComponents/CenterStageProperties.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6142626">
+              <caret line="45" column="81" selection-start-line="45" selection-start-column="81" selection-end-line="45" selection-end-column="81" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PropertiesPanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PropertiesPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="71" selection-start-line="21" selection-start-column="71" selection-end-line="21" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -123,7 +144,6 @@
         <option value="$PROJECT_DIR$/src/ToolComponents/CropComponent.java" />
         <option value="$PROJECT_DIR$/src/ToolComponents/SaveComponent.java" />
         <option value="$PROJECT_DIR$/src/ToolComponents/UndoComponent.java" />
-        <option value="$PROJECT_DIR$/src/CenterStageComponents/CenterStageProperties.java" />
         <option value="$PROJECT_DIR$/src/PropertiesPanel.java" />
         <option value="$PROJECT_DIR$/src/ToolComponents/RotateComponent.java" />
         <option value="$PROJECT_DIR$/src/ToolComponents/CustomComponents/CustomButton.java" />
@@ -132,6 +152,7 @@
         <option value="$PROJECT_DIR$/src/ToolComponents/FilterComponent.java" />
         <option value="$PROJECT_DIR$/src/MagickGuiDisplay.java" />
         <option value="$PROJECT_DIR$/src/CenterStage.java" />
+        <option value="$PROJECT_DIR$/src/CenterStageComponents/CenterStageProperties.java" />
       </list>
     </option>
   </component>
@@ -651,9 +672,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -661,6 +680,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="71" selection-start-line="21" selection-start-column="71" selection-end-line="21" selection-end-column="71" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -862,23 +882,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CenterStageComponents/CenterStageProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33766234">
-          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PropertiesPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25487012">
-          <caret line="21" column="71" selection-start-line="21" selection-start-column="71" selection-end-line="21" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ToolComponents/UndoComponent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5519481">
@@ -958,10 +961,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/PropertiesPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="71" selection-start-line="21" selection-start-column="71" selection-end-line="21" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/CenterStage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9918963">
-          <caret line="41" column="73" selection-start-line="41" selection-start-column="73" selection-end-line="41" selection-end-column="73" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CenterStageComponents/CenterStageProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6142626">
+          <caret line="45" column="81" selection-start-line="45" selection-start-column="81" selection-end-line="45" selection-end-column="81" />
           <folding />
         </state>
       </provider>

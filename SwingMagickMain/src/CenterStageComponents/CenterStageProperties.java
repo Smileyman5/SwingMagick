@@ -17,10 +17,11 @@ public class CenterStageProperties extends JPanel
     private JLabel sizeLabel;
     private JLabel locationLabel;
     private JLabel zoomLabel;
-    private ImageIcon image;
+    private JLabel imageLabel;
 
     public CenterStageProperties(JScrollPane scrollPane, JLabel imageLabel)
     {
+        this.imageLabel = imageLabel;
         setLayout(new MigLayout("", "[grow]", "[]"));
         setBackground(Color.DARK_GRAY);
         setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
@@ -42,8 +43,7 @@ public class CenterStageProperties extends JPanel
             @Override
             public void mouseMoved(MouseEvent e)
             {
-//                System.out.println(scrollPane.getComponent(0).getX());
-                locationLabel.setText("loc: " + (e.getX() - imageLabel.getX() - 10) + "x" + (e.getY() - imageLabel.getY() - 10));
+                locationLabel.setText("loc: " + (e.getX() - imageLabel.getX() - 3) + "x" + (e.getY() - imageLabel.getY() - 3));
             }
         });
 
