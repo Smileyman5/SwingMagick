@@ -11,19 +11,26 @@ public class CenterStage extends JPanel
 {
     private JPanel imageHolder;
     private JLabel image;
+//    private JLabel image2;
     private JScrollPane scrollPane;
 
     public CenterStage()
     {
-        setBackground(Color.CYAN);
+        setBackground(Color.DARK_GRAY);
 
         image = new JLabel();
-        image.setBackground(Color.WHITE);
-        image.setIcon(new ImageIcon("./out/images/crop.png"));
+        image.setBackground(Color.DARK_GRAY);
+        image.setIcon(new ImageIcon("./out/images/nature.png"));
 
-        imageHolder = new JPanel();
-        imageHolder.setBackground(Color.LIGHT_GRAY);
-        imageHolder.add(image);
+//        image2 = new JLabel();
+//        image2.setBackground(Color.WHITE);
+//        image2.setIcon(new ImageIcon("./out/images/crop.png"));
+
+
+        imageHolder = new JPanel(new MigLayout());
+        imageHolder.setBackground(Color.DARK_GRAY);
+        imageHolder.add(image, "wrap");
+//        imageHolder.add(image2);
 
         scrollPane = new JScrollPane();
         scrollPane.add(imageHolder);

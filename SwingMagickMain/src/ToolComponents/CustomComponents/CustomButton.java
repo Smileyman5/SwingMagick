@@ -10,11 +10,12 @@ import java.awt.event.MouseListener;
  */
 public class CustomButton extends JButton implements MouseListener
 {
-
     private Icon currentIcon;
+    private JPopupMenu popupMenu;
 
     public CustomButton(String imageDir)
     {
+        popupMenu = new JPopupMenu();
         currentIcon = new ImageIcon(imageDir);
         setIcon(currentIcon);
         addMouseListener(this);
@@ -34,6 +35,7 @@ public class CustomButton extends JButton implements MouseListener
     {
         if (getPressedIcon() != null)
             currentIcon = getPressedIcon();
+        new Thread(() -> popupMenu.show(this, getWidth()/2, getHeight()/2)).start();
     }
 
     @Override
@@ -54,5 +56,10 @@ public class CustomButton extends JButton implements MouseListener
     public void mouseExited(MouseEvent e)
     {
         currentIcon = getIcon();
+    }
+
+    public void addPopupItem(JMenuItem menuItem)
+    {
+        popupMenu.add(menuItem);
     }
 }

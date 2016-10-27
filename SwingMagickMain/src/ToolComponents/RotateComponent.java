@@ -18,6 +18,12 @@ public class RotateComponent extends ToolComponent
         rotateButton = new CustomButton("./out/images/rotate.png");
         rotateButton.setRolloverIcon(new ImageIcon("./out/images/rotate-hover.png"));
         rotateButton.setPressedIcon(new ImageIcon("./out/images/rotate-clicked.png"));
+
+        rotateButton.addPopupItem(new JMenuItem("45 degrees"));
+        rotateButton.addPopupItem(new JMenuItem("90 degrees"));
+        rotateButton.addPopupItem(new JMenuItem("180 degrees"));
+        rotateButton.addPopupItem(new JMenuItem("270 degrees"));
+
         add(rotateButton);
         rotateButton.setToolTipText("Rotate the image.");
     }
