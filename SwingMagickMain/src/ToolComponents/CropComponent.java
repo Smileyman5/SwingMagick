@@ -10,11 +10,6 @@ import javax.swing.*;
  */
 public class CropComponent extends ToolComponent
 {
-    private static final String WRAP_GROW_STRING = "wrap, growx";
-
-    private JButton resizeButton;
-    private JButton flipButton;
-    private JButton rotateButton;
     private CustomButton cropButton;
 
     public CropComponent()
