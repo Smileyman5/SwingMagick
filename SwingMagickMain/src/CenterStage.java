@@ -35,12 +35,11 @@ public class CenterStage extends JPanel
         imageHolder.add(imageLabel);
 //        imageHolder.add(image2);
 
-        scrollPane = new JScrollPane();
-        scrollPane.add(imageHolder);
+        scrollPane = new JScrollPane(imageHolder);
 
         setLayout(new MigLayout("", "[grow]", "[grow][]"));
-        add (new JScrollPane(imageHolder), "grow, wrap");
-        add (new CenterStageProperties(), "growx");
+        add (scrollPane, "grow, wrap");
+        add (new CenterStageProperties(scrollPane, imageLabel), "growx");
     }
 
     /**
