@@ -16,17 +16,20 @@ public class ToolPallet extends JPanel
 
     public ToolPallet()
     {
-        setLayout(new MigLayout("", "[grow]", ""));
+        setLayout(new MigLayout("", "[grow]", "[][][][][]push[][]"));
         setBackground(Color.DARK_GRAY);
         setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        toolComponents.add(new SaveComponent());
-        toolComponents.add(new UndoComponent());
         toolComponents.add(new CropComponent());
         toolComponents.add(new ResizeComponent());
         toolComponents.add(new RotateComponent());
         toolComponents.add(new FlipComponent());
+        toolComponents.add(new FilterComponent());
+//        toolComponents.add(new SaveComponent());
+//        toolComponents.add(new UndoComponent());
         for (ToolComponent component: toolComponents)
             add(component, WRAP_GROW_STRING);
+        add(new SaveComponent(), "growx, wrap, aligny bottom");
+        add(new UndoComponent(), "growx, aligny bottom");
     }
 
     public void addComponent(ToolComponent component)

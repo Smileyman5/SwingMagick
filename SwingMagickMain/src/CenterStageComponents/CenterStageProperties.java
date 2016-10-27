@@ -3,6 +3,7 @@ package CenterStageComponents;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import java.awt.*;
 
 /**
@@ -20,6 +21,7 @@ public class CenterStageProperties extends JPanel
     {
         setLayout(new MigLayout("", "[grow]", "[]"));
         setBackground(Color.DARK_GRAY);
+        setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 
         toolTipLabel = new JLabel("Left-click and drag to select area to crop");
         toolTipLabel.setForeground(Color.WHITE);

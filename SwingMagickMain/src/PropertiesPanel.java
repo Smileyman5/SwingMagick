@@ -1,6 +1,7 @@
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import java.awt.*;
 
 /**
@@ -18,6 +19,7 @@ public class PropertiesPanel extends JPanel
     {
         setLayout(new MigLayout());
         setBackground(Color.DARK_GRAY);
+        setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 
         propertyTypeLabel = new JLabel("Crop Properties:     (X1, Y1): (");
         propertyTypeLabel.setForeground(Color.WHITE);

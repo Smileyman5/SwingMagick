@@ -25,9 +25,10 @@ public class Main
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // mainPanel is where all visuals will take place
         frame.setContentPane(new MagickGuiDisplay());
-        frame.getRootPane().setBackground(Color.BLACK);
+        // Set minimum size of screen
+        frame.setMinimumSize(new Dimension(600, 500));
         // Set preferred size of screen
-        frame.setPreferredSize(new Dimension(700, 700));
+        frame.setPreferredSize(new Dimension(1300, 900));
         // Packing...
         frame.pack();
         // Display!

@@ -72,6 +72,7 @@ public class MagickGuiDisplay extends JPanel
         menuBar.add(menu);
         menuItem = new JMenuItem("About");
         menu.add(menuItem);
+        menuBar.setMinimumSize(new Dimension(20, 20));
         return menuBar;
     }
 }
