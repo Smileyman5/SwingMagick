@@ -3,6 +3,7 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 /**
@@ -14,22 +15,40 @@ public class ToolPallet extends JPanel
 
     private ArrayList<ToolComponent> toolComponents = new ArrayList<>();
 
+    private CropComponent crop = new CropComponent();
+    private ResizeComponent resize = new ResizeComponent();
+    private RotateComponent rotate = new RotateComponent();
+    private FlipComponent flip = new FlipComponent();
+    private FilterComponent filter = new FilterComponent();
+    private SaveComponent save = new SaveComponent();
+    private UndoComponent undo = new UndoComponent();
+
     public ToolPallet()
     {
         setLayout(new MigLayout("", "[grow]", "[][][][][]push[][]"));
         setBackground(Color.DARK_GRAY);
         setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        toolComponents.add(new CropComponent());
-        toolComponents.add(new ResizeComponent());
-        toolComponents.add(new RotateComponent());
-        toolComponents.add(new FlipComponent());
-        toolComponents.add(new FilterComponent());
+        toolComponents.add(crop);
+        toolComponents.add(resize);
+        toolComponents.add(rotate);
+        toolComponents.add(flip);
+        toolComponents.add(filter);
 //        toolComponents.add(new SaveComponent());
 //        toolComponents.add(new UndoComponent());
         for (ToolComponent component: toolComponents)
             add(component, WRAP_GROW_STRING);
-        add(new SaveComponent(), "growx, wrap, aligny bottom");
-        add(new UndoComponent(), "growx, aligny bottom");
+        add(save, "growx, wrap, aligny bottom");
+        add(undo, "growx, aligny bottom");
+    }
+
+    public void addListeners(PropertyChangeListener listener) {
+        crop.addListener(listener);
+        resize.addListener(listener);
+        flip.addListener(listener);
+        rotate.addListener(listener);
+        filter.addListener(listener);
+        save.addListener(listener);
+        undo.addListener(listener);
     }
 
     public void addComponent(ToolComponent component)

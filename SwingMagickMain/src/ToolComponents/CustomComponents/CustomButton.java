@@ -11,7 +11,7 @@ public class CustomButton extends JButton
     private Icon currentIcon;
     private JPopupMenu popupMenu;
 
-    public CustomButton(String imageDir)
+    public CustomButton(String imageDir, String toolType)
     {
         popupMenu = new JPopupMenu();
         currentIcon = new ImageIcon(imageDir);
@@ -22,6 +22,7 @@ public class CustomButton extends JButton
         setContentAreaFilled(false);
 
         addActionListener(e -> new Thread(() -> popupMenu.show(this, getWidth()/2, getHeight()/2)).start());
+        addActionListener(e -> firePropertyChange(toolType, 0, 1));
     }
 
     public void addPopupItem(JMenuItem menuItem)
