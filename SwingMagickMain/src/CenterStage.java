@@ -10,7 +10,6 @@ import java.io.File;
  */
 public class CenterStage extends JPanel
 {
-    private final File temp;
     private volatile File currentImage;
     private ImageIcon image;
     private String imageFilename;
@@ -22,8 +21,6 @@ public class CenterStage extends JPanel
     public CenterStage()
     {
         setBackground(Color.DARK_GRAY);
-
-        temp = new File("out/images/temp.jpg");
         imageFilename = "out/images/nature2";
         currentImage = new File(imageFilename + ".jpg");
         image = new ImageIcon(currentImage.getAbsolutePath());
