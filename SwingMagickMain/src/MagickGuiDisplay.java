@@ -46,6 +46,13 @@ public class MagickGuiDisplay extends JPanel
         cards.add(resizePanel, "resize");
         cards.add(rotatePanel, "rotate");
 
+        flipPanel.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent propertyChangeEvent) {
+                
+            }
+        });
+
         rotatePanel.addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {

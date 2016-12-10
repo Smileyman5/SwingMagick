@@ -53,6 +53,7 @@ public class CenterStage extends JPanel
         image.getImage().flush();
         image = new ImageIcon(file.getAbsolutePath());
         imageFilename = file.getAbsolutePath();
+        currentImage = file;
         imageLabel.setIcon(image);
         imageLabel.setPreferredSize(new Dimension(image.getIconWidth() + 20, image.getIconHeight() + 20));
     }
