@@ -10,6 +10,8 @@ import java.io.File;
  */
 public class CenterStage extends JPanel
 {
+    private final File temp;
+    private volatile File currentImage;
     private ImageIcon image;
     private String imageFilename;
     private JPanel imageHolder;
@@ -21,12 +23,14 @@ public class CenterStage extends JPanel
     {
         setBackground(Color.DARK_GRAY);
 
-        imageFilename = "./out/images/nature2.jpg";
-        image = new ImageIcon("./out/images/nature2.jpg");
+        temp = new File("out/images/temp.jpg");
+        imageFilename = "out/images/nature2";
+        currentImage = new File(imageFilename + ".jpg");
+        image = new ImageIcon(currentImage.getAbsolutePath());
 
         imageLabel = new JLabel(image, JLabel.CENTER);
         imageLabel.setBackground(Color.DARK_GRAY);
-        imageLabel.setPreferredSize(new Dimension(image.getIconWidth(), image.getIconHeight()));
+        imageLabel.setPreferredSize(new Dimension(image.getIconWidth() + 20, image.getIconHeight() + 20));
 //        image2 = new JLabel();
 //        image2.setBackground(Color.WHITE);
 //        image2.setIcon(new ImageIcon("./out/images/crop.png"));
@@ -49,15 +53,22 @@ public class CenterStage extends JPanel
      * @param file The file being viewed
      */
     public void setDisplayedImage(File file) {
+        image.getImage().flush();
         image = new ImageIcon(file.getAbsolutePath());
         imageFilename = file.getAbsolutePath();
         imageLabel.setIcon(image);
-        imageLabel.setPreferredSize(new Dimension(image.getIconWidth(), image.getIconHeight()));
+        imageLabel.setPreferredSize(new Dimension(image.getIconWidth() + 20, image.getIconHeight() + 20));
     }
 
-    public String getCurrentImage(){
-        System.out.println(imageFilename);
-        return imageFilename;
+    public File getCurrentImage(){
+//        System.out.println(imageFilename);
+        return currentImage;
+    }
+
+    public void refresh()
+    {
+//        setDisplayedImage(temp);
+        setDisplayedImage(new File(currentImage.getAbsolutePath()));
     }
 
     // TODO command execution should probably happen here? because image loading? or at least tie this class and the tools

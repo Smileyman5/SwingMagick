@@ -17,6 +17,10 @@ public class Main
         SwingUtilities.invokeLater(() -> new Main());
     }
 
+    /**
+     * Constructor.
+     * Starts up main view
+     */
     public Main()
     {
         // Setting up main frame

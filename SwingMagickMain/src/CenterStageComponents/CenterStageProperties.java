@@ -28,7 +28,7 @@ public class CenterStageProperties extends JPanel
 
         toolTipLabel = new JLabel("Left-click and drag to select area to crop");
         toolTipLabel.setForeground(Color.WHITE);
-        sizeLabel = new JLabel("size: " + 32 + "x" + 32);
+        sizeLabel = new JLabel("size: " + imageLabel.getWidth() + "x" + imageLabel.getHeight());
         sizeLabel.setForeground(Color.WHITE);
         locationLabel = new JLabel("loc: " + 0 + "x" + 0);
         locationLabel.setForeground(Color.WHITE);
@@ -38,12 +38,15 @@ public class CenterStageProperties extends JPanel
         scrollPane.addMouseMotionListener(new MouseMotionListener()
         {
             @Override
-            public void mouseDragged(MouseEvent e) { }
+            public void mouseDragged(MouseEvent e)
+            {
+            }
 
             @Override
             public void mouseMoved(MouseEvent e)
             {
-                locationLabel.setText("loc: " + (e.getX() - imageLabel.getX() - 3) + "x" + (e.getY() - imageLabel.getY() - 3));
+                sizeLabel.setText("size: " + imageLabel.getWidth() + "x" + imageLabel.getHeight());
+                locationLabel.setText("loc: " + (e.getX() - imageLabel.getX() - 13) + "x" + (e.getY() - imageLabel.getY() - 13));
             }
         });
 
