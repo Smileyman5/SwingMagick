@@ -11,6 +11,7 @@ import java.io.File;
 public class CenterStage extends JPanel
 {
     private ImageIcon image;
+    private String imageFilename;
     private JPanel imageHolder;
     private JLabel imageLabel;
 //    private JLabel image2;
@@ -20,6 +21,7 @@ public class CenterStage extends JPanel
     {
         setBackground(Color.DARK_GRAY);
 
+        imageFilename = "./out/images/nature2.jpg";
         image = new ImageIcon("./out/images/nature2.jpg");
 
         imageLabel = new JLabel(image, JLabel.CENTER);
@@ -48,7 +50,16 @@ public class CenterStage extends JPanel
      */
     public void setDisplayedImage(File file) {
         image = new ImageIcon(file.getAbsolutePath());
+        imageFilename = file.getAbsolutePath();
         imageLabel.setIcon(image);
         imageLabel.setPreferredSize(new Dimension(image.getIconWidth(), image.getIconHeight()));
     }
+
+    public String getCurrentImage(){
+        System.out.println(imageFilename);
+        return imageFilename;
+    }
+
+    // TODO command execution should probably happen here? because image loading? or at least tie this class and the tools
+    // to a model
 }

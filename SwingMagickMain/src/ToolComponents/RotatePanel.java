@@ -5,6 +5,8 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Mike on 12/7/2016.
@@ -42,5 +44,19 @@ public class RotatePanel extends JPanel {
         add(rotateDegreesField);
         add(unit);
         add(confirmButton, "push, al right");
+
+        confirmButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    if (rotateDegreesField.getText() != null){
+                    Double degreeSet = Double.parseDouble(rotateDegreesField.getText());
+                    firePropertyChange("rotateImg",false,degreeSet);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

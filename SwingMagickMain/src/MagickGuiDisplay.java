@@ -4,6 +4,9 @@ import ToolComponents.FlipPanel;
 import ToolComponents.ResizePanel;
 import ToolComponents.RotatePanel;
 import net.miginfocom.swing.MigLayout;
+import org.im4java.core.ConvertCmd;
+import org.im4java.core.IM4JavaException;
+import org.im4java.core.IMOperation;
 import org.im4java.process.ProcessStarter;
 
 import javax.swing.*;
@@ -15,6 +18,7 @@ import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by alex on 10/23/2016.
@@ -41,6 +45,38 @@ public class MagickGuiDisplay extends JPanel
         cards.add(flipPanel, "flip");
         cards.add(resizePanel, "resize");
         cards.add(rotatePanel, "rotate");
+
+        rotatePanel.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                String xmd = evt.getPropertyName();
+                if (xmd.equals("rotateImg")) {
+                    try {
+                        // create command
+                        ConvertCmd cmd = new ConvertCmd();
+                        cmd.setSearchPath("C:/Program Files/ImageMagick-7.0.3-Q16");
+
+                        IMOperation op = new IMOperation();
+
+                        String currentFilename = stage.getCurrentImage();
+
+                        op.addImage(currentFilename);
+                        op.rotate((Double) evt.getNewValue());
+//                        op.addImage("./out/images/output" + currentFilename.substring(currentFilename.length()-4, currentFilename.length()));
+                        op.addImage(currentFilename);
+
+                        // execute the operation
+                        System.out.println("convert " + op);
+                        cmd.run(op);
+
+//                        stage.setDisplayedImage(new File("./out/images/output" + currentFilename.substring(currentFilename.length()-4, currentFilename.length())));
+                        stage.setDisplayedImage(new File(currentFilename));
+                    } catch (IOException | InterruptedException | IM4JavaException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
 
         try {
             // Set cross-platform look: "Nimbus"
@@ -133,4 +169,8 @@ public class MagickGuiDisplay extends JPanel
         menuBar.setMinimumSize(new Dimension(20, 20));
         return menuBar;
     }
+
+    //TODO: A listener here. Each tool panel should have an action listener on the button that grabs info and sticks it
+    //into a command. It should then fire that command here where it will act accordingly on the image. Make sure you
+    //add listeners to each of the panels!
 }

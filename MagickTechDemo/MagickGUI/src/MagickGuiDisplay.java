@@ -62,11 +62,12 @@ public class MagickGuiDisplay extends JPanel
         {
             // create command
             ConvertCmd cmd = new ConvertCmd();
+            cmd.setSearchPath("C:/Program Files/ImageMagick-7.0.3-Q16");
 
             // create the operation, add images and operators/options
             IMOperation op = new IMOperation();
             op.addImage(currentImage.getName());
-            op.rotate(0d);
+            op.rotate(90d);
             op.addImage("output.jpg");
 
             // execute the operation
