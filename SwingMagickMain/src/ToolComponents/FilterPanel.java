@@ -5,6 +5,8 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * The JPanel containing the options for the filter tool
@@ -41,5 +43,13 @@ public class FilterPanel extends JPanel {
         add(comboBoxLabel);
         add(filterOptions);
         add(confirmButton, "push, al right");
+
+        confirmButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                String filter = (String) filterOptions.getSelectedItem();
+                firePropertyChange("filterImg",false,filter);
+            }
+        });
     }
 }
