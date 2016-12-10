@@ -48,8 +48,40 @@ public class MagickGuiDisplay extends JPanel
 
         flipPanel.addPropertyChangeListener(new PropertyChangeListener() {
             @Override
-            public void propertyChange(PropertyChangeEvent propertyChangeEvent) {
-                
+            public void propertyChange(PropertyChangeEvent evt) {
+                String xmd = evt.getPropertyName();
+
+                if (xmd.equals("flipImg")) {
+                    try {
+                        boolean[] instructions = (boolean[]) evt.getNewValue();
+                        // create command
+                        ConvertCmd cmd = new ConvertCmd();
+                        cmd.setSearchPath("C:\\Program Files (x86)\\ImageMagick-6.3.9-Q8");
+
+                        IMOperation op = new IMOperation();
+
+                        File currentFilename = stage.getCurrentImage();
+
+                        op.addImage(currentFilename.getAbsolutePath());
+                        if (instructions[1]) {
+                            op.flip();//over x-axis
+                        }
+                        if (instructions[0]) {
+                            op.flop();//over y-axis
+                        }
+//                        op.addImage("./out/images/output" + currentFilename.substring(currentFilename.length()-4, currentFilename.length()));
+                        op.addImage(currentFilename.getAbsolutePath());
+
+                        // execute the operation
+//                        System.out.println("convert " + op);
+                        cmd.run(op);
+
+//                        stage.setDisplayedImage(new File("./out/images/output" + currentFilename.substring(currentFilename.length()-4, currentFilename.length())));
+                        stage.refresh();
+                    } catch (IOException | InterruptedException | IM4JavaException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         });
 

@@ -5,6 +5,8 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Mike on 12/7/2016.
@@ -48,5 +50,13 @@ public class FlipPanel extends JPanel{
         add(yAxisLabel);
         add(flipYAxisBox);
         add(confirmButton, "push, al right");
+
+        confirmButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                boolean[] flipInstructions = {flipXAxisBox.isSelected(), flipYAxisBox.isSelected()};
+                firePropertyChange("flipImg",false,flipInstructions);
+            }
+        });
     }
 }
