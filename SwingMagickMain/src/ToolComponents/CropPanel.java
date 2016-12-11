@@ -5,6 +5,11 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  * The JPanel containing the options for the crop tool
@@ -18,32 +23,41 @@ public class CropPanel extends JPanel{
     private JLabel propertyTypeLabel;
     private JLabel coordStartLabel;
     private JLabel coordEndLabel;
-    private JLabel commaLabel = new JLabel(",");
-    private JLabel commaLabel2 = new JLabel(",");
+    private JLabel commaLabel = new JLabel("      Y =");
+    private JLabel commaLabel2 = new JLabel("      Y =");
 
     private JButton confirmButton;
 
     public CropPanel () {
+
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.getDefault());
+        DecimalFormat decimalFormat = (DecimalFormat) numberFormat;
+        decimalFormat.setGroupingUsed(false);
+
         setLayout(new MigLayout());
         setBackground(Color.DARK_GRAY);
         setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 
-        propertyTypeLabel = new JLabel("Crop Properties:    (X1, Y1) = (");
+        propertyTypeLabel = new JLabel("Crop Properties:    Image Size: X =");
         propertyTypeLabel.setForeground(Color.WHITE);
-        coordStartLabel = new JLabel(")     (X2, Y2) = (");
+        coordStartLabel = new JLabel("      Crop Offset: X =");
         coordStartLabel.setForeground(Color.WHITE);
         coordEndLabel = new JLabel(")");
         coordEndLabel.setForeground(Color.WHITE);
         commaLabel.setForeground(Color.WHITE);
         commaLabel2.setForeground(Color.WHITE);
 
-        startXField = new JTextField("Start_Coordinate");
+        startXField = new JFormattedTextField(decimalFormat);
+        startXField.setColumns(6);
         startXField.setBackground(Color.GRAY);
-        endXField = new JTextField("End_Coordinate");
+        endXField = new JFormattedTextField(decimalFormat);
+        endXField.setColumns(6);
         endXField.setBackground(Color.GRAY);
-        startYField = new JTextField("Start_Coordinate");
+        startYField = new JFormattedTextField(decimalFormat);
+        startYField.setColumns(6);
         startYField.setBackground(Color.GRAY);
-        endYField = new JTextField("End_Coordinate");
+        endYField = new JFormattedTextField(decimalFormat);
+        endYField.setColumns(6);
         endYField.setBackground(Color.GRAY);
 
         confirmButton = new JButton("Crop");
@@ -57,7 +71,19 @@ public class CropPanel extends JPanel{
         add(endXField);
         add(commaLabel2);
         add(endYField);
-        add(coordEndLabel);
+//        add(coordEndLabel);
         add(confirmButton, "push, al right");
+
+        confirmButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if (!startXField.getText().equals("") && !startYField.getText().equals("") &&
+                        !endXField.getText().equals("") && !endYField.getText().equals("")) {
+                    int[] params = {Integer.parseInt(startXField.getText()), Integer.parseInt(startYField.getText()),
+                            Integer.parseInt(endXField.getText()), Integer.parseInt(endYField.getText())};
+                    firePropertyChange("cropImg", false, params);
+                }
+            }
+        });
     }
 }
