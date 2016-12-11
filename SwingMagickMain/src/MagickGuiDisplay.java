@@ -125,6 +125,46 @@ public class MagickGuiDisplay extends JPanel
             }
         });
 
+        resizePanel.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                String xmd = evt.getPropertyName();
+                if (xmd.equals("resizeImg")) {
+                    try {
+                        int[] params = (int[]) evt.getNewValue();
+                        // create command
+                        ConvertCmd cmd = new ConvertCmd();
+                        cmd.setSearchPath("C:\\Program Files (x86)\\ImageMagick-6.3.9-Q8");
+
+                        IMOperation op = new IMOperation();
+
+                        File currentFilename = stage.getCurrentImage();
+
+                        op.addImage(currentFilename.getAbsolutePath());
+
+                        int dimX = params[0];
+                        int dimY = params[1];
+                        if (params[2] == 1) {
+                            op.resize(dimX, dimY, '!');
+                        } else {
+                            op.resize(dimX, dimY);
+                        }
+//                        op.addImage("./out/images/output" + currentFilename.substring(currentFilename.length()-4, currentFilename.length()));
+                        op.addImage(currentFilename.getAbsolutePath());
+
+                        // execute the operation
+//                        System.out.println("convert " + op);
+                        cmd.run(op);
+
+//                        stage.setDisplayedImage(new File("./out/images/output" + currentFilename.substring(currentFilename.length()-4, currentFilename.length())));
+                        stage.refresh();
+                    } catch (IOException | InterruptedException | IM4JavaException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
         rotatePanel.addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
@@ -248,8 +288,4 @@ public class MagickGuiDisplay extends JPanel
         menuBar.setMinimumSize(new Dimension(20, 20));
         return menuBar;
     }
-
-    //TODO: A listener here. Each tool panel should have an action listener on the button that grabs info and sticks it
-    //into a command. It should then fire that command here where it will act accordingly on the image. Make sure you
-    //add listeners to each of the panels!
 }
