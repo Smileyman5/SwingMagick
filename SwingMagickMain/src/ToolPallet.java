@@ -25,7 +25,7 @@ public class ToolPallet extends JPanel
 
     public ToolPallet()
     {
-        setLayout(new MigLayout("", "[grow]", "[][][][][]push[][]"));
+        setLayout(new MigLayout("", "[grow]", "[][][][][][][]"));
         setBackground(Color.DARK_GRAY);
         setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
         toolComponents.add(crop);
@@ -35,10 +35,10 @@ public class ToolPallet extends JPanel
         toolComponents.add(filter);
 //        toolComponents.add(new SaveComponent());
 //        toolComponents.add(new UndoComponent());
+        add(save, "growx, wrap");
+        add(undo, "growx, wrap");
         for (ToolComponent component: toolComponents)
             add(component, WRAP_GROW_STRING);
-        add(save, "growx, wrap, aligny bottom");
-        add(undo, "growx, aligny bottom");
     }
 
     public void addListeners(PropertyChangeListener listener) {
