@@ -1,20 +1,18 @@
-import ToolComponents.CropPanel;
-import ToolComponents.FilterPanel;
-import ToolComponents.FlipPanel;
-import ToolComponents.ResizePanel;
-import ToolComponents.RotatePanel;
+import ToolComponents.*;
 import net.miginfocom.swing.MigLayout;
 import org.im4java.core.ConvertCmd;
 import org.im4java.core.IM4JavaException;
 import org.im4java.core.IMOperation;
 import org.im4java.process.ProcessStarter;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
@@ -25,6 +23,8 @@ import java.io.IOException;
  */
 public class MagickGuiDisplay extends JPanel
 {
+    public String lastCommand = "save";
+
     private CenterStage stage;
 
     private JPanel cards;
@@ -60,6 +60,8 @@ public class MagickGuiDisplay extends JPanel
                         IMOperation op = new IMOperation();
 
                         File currentFilename = stage.getCurrentImage();
+                        BufferedImage beforeConversion = ImageIO.read(currentFilename);
+                        ImageIO.write(beforeConversion, "jpg", FileManager.UNDO_FILE.getFile());
 
                         op.addImage(currentFilename.getAbsolutePath());
 
@@ -73,6 +75,7 @@ public class MagickGuiDisplay extends JPanel
 
 //                        stage.setDisplayedImage(new File("./out/images/output" + currentFilename.substring(currentFilename.length()-4, currentFilename.length())));
                         stage.refresh();
+                        lastCommand = "convert " + op;
                     } catch (IOException | InterruptedException | IM4JavaException e) {
                         e.printStackTrace();
                     }
@@ -94,6 +97,8 @@ public class MagickGuiDisplay extends JPanel
                         IMOperation op = new IMOperation();
 
                         File currentFilename = stage.getCurrentImage();
+                        BufferedImage beforeConversion = ImageIO.read(currentFilename);
+                        ImageIO.write(beforeConversion, "jpg", FileManager.UNDO_FILE.getFile());
 
                         op.addImage(currentFilename.getAbsolutePath());
 
@@ -113,6 +118,7 @@ public class MagickGuiDisplay extends JPanel
 
 //                        stage.setDisplayedImage(new File("./out/images/output" + currentFilename.substring(currentFilename.length()-4, currentFilename.length())));
                         stage.refresh();
+                        lastCommand = "convert " + op;
                     } catch (IOException | InterruptedException | IM4JavaException e) {
                         e.printStackTrace();
                     }
@@ -135,6 +141,8 @@ public class MagickGuiDisplay extends JPanel
                         IMOperation op = new IMOperation();
 
                         File currentFilename = stage.getCurrentImage();
+                        BufferedImage beforeConversion = ImageIO.read(currentFilename);
+                        ImageIO.write(beforeConversion, "jpg", FileManager.UNDO_FILE.getFile());
 
                         op.addImage(currentFilename.getAbsolutePath());
                         if (instructions[1]) {
@@ -152,6 +160,7 @@ public class MagickGuiDisplay extends JPanel
 
 //                        stage.setDisplayedImage(new File("./out/images/output" + currentFilename.substring(currentFilename.length()-4, currentFilename.length())));
                         stage.refresh();
+                        lastCommand = "convert " + op;
                     } catch (IOException | InterruptedException | IM4JavaException e) {
                         e.printStackTrace();
                     }
@@ -173,6 +182,8 @@ public class MagickGuiDisplay extends JPanel
                         IMOperation op = new IMOperation();
 
                         File currentFilename = stage.getCurrentImage();
+                        BufferedImage beforeConversion = ImageIO.read(currentFilename);
+                        ImageIO.write(beforeConversion, "jpg", FileManager.UNDO_FILE.getFile());
 
                         op.addImage(currentFilename.getAbsolutePath());
 
@@ -192,6 +203,7 @@ public class MagickGuiDisplay extends JPanel
 
 //                        stage.setDisplayedImage(new File("./out/images/output" + currentFilename.substring(currentFilename.length()-4, currentFilename.length())));
                         stage.refresh();
+                        lastCommand = "convert " + op;
                     } catch (IOException | InterruptedException | IM4JavaException e) {
                         e.printStackTrace();
                     }
@@ -212,6 +224,8 @@ public class MagickGuiDisplay extends JPanel
                         IMOperation op = new IMOperation();
 
                         File currentFilename = stage.getCurrentImage();
+                        BufferedImage beforeConversion = ImageIO.read(currentFilename);
+                        ImageIO.write(beforeConversion, "jpg", FileManager.UNDO_FILE.getFile());
 
                         op.addImage(currentFilename.getAbsolutePath());
                         op.rotate((Double) evt.getNewValue());
@@ -224,6 +238,7 @@ public class MagickGuiDisplay extends JPanel
 
 //                        stage.setDisplayedImage(new File("./out/images/output" + currentFilename.substring(currentFilename.length()-4, currentFilename.length())));
                         stage.refresh();
+                        lastCommand = "convert " + op;
                     } catch (IOException | InterruptedException | IM4JavaException e) {
                         e.printStackTrace();
                     }
@@ -255,13 +270,35 @@ public class MagickGuiDisplay extends JPanel
 
         pallet.addListeners(evt -> {
             String toolName = evt.getPropertyName();
-            if (!toolName.equals("save") || !toolName.equals("undo")) {
+            if (!toolName.equals("save") && !toolName.equals("undo")) {
                 CardLayout cl1 = (CardLayout)(cards.getLayout());
                 cl1.show(cards, toolName);
             } else if (toolName.equals("save")) {
-                //save function goes here
+                //save function going here! :P
+                try
+                {
+                    BufferedImage temp = ImageIO.read(stage.getCurrentImage());
+                    ImageIO.write(temp, "jpg", FileManager.MAIN_FILE.getFile());
+                    stage.refresh();
+                    lastCommand = "save";
+                } catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
             } else if (toolName.equals("undo")) {
                 //undo function here
+                try
+                {
+                    BufferedImage undo = ImageIO.read(FileManager.UNDO_FILE.getFile());
+                    BufferedImage temp = ImageIO.read(FileManager.TEMP_FILE.getFile());
+                    ImageIO.write(undo, "jpg", stage.getCurrentImage());
+                    ImageIO.write(temp, "jpg", FileManager.UNDO_FILE.getFile());
+                    stage.refresh();
+                    lastCommand = "undo";
+                } catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
             }
         });
 

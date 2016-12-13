@@ -21,7 +21,7 @@ public class CustomButton extends JButton
         setMargin(new Insets(0, 0, 0, 0));
         setContentAreaFilled(false);
 
-        addActionListener(e -> new Thread(() -> popupMenu.show(this, getWidth()/2, getHeight()/2)).start());
+//        addActionListener(e -> new Thread(() -> popupMenu.show(this, getWidth()/2, getHeight()/2)).start());
         addActionListener(e -> firePropertyChange(toolType, 0, 1));
     }
 

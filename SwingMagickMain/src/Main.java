@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 
 /**
@@ -23,12 +25,15 @@ public class Main
      */
     public Main()
     {
+        MagickGuiDisplay magickGuiDisplay = new MagickGuiDisplay();
         // Setting up main frame
         JFrame frame = new JFrame("Magick Display!");
         // Exit on close
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         // mainPanel is where all visuals will take place
-        frame.setContentPane(new MagickGuiDisplay());
+        frame.setContentPane(magickGuiDisplay);
+        // Adding window listener
+        addWindowListener(frame, magickGuiDisplay);
         // Set minimum size of screen
         frame.setMinimumSize(new Dimension(600, 500));
         // Set preferred size of screen
@@ -37,6 +42,34 @@ public class Main
         frame.pack();
         // Display!
         frame.setVisible(true);
+    }
+
+    private void addWindowListener(Frame frame, MagickGuiDisplay magickGuiDisplay)
+    {
+        frame.addWindowListener(new WindowAdapter()
+        {
+
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                super.windowClosing(e);
+                if (!magickGuiDisplay.lastCommand.equals("save"))
+                {
+                    if(JOptionPane.showConfirmDialog(magickGuiDisplay,
+                            "Are you sure you want to quit without saving?",
+                            "Exiting Without Saving",
+                            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)
+                    {
+                        System.exit(0);
+                    }
+                }
+                else
+                {
+                    System.exit(0);
+                }
+
+            }
+        });
     }
 }
 

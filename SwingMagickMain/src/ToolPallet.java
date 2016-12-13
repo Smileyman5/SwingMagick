@@ -25,7 +25,7 @@ public class ToolPallet extends JPanel
 
     public ToolPallet()
     {
-        setLayout(new MigLayout("", "[grow]", "[][][][][][][]"));
+        setLayout(new MigLayout("", "[grow]", "[][]push[][][][][]"));
         setBackground(Color.DARK_GRAY);
         setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
         toolComponents.add(crop);
