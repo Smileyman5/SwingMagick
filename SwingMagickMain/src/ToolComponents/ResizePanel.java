@@ -68,6 +68,7 @@ public class ResizePanel extends JPanel {
 
         confirmButton = new JButton("Resize");
         confirmButton.setBackground(Color.GRAY);
+        confirmButton.setForeground(Color.WHITE);
 
         add(propertyTypeLabel);
         add(xLabel);

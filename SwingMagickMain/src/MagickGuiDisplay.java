@@ -7,6 +7,7 @@ import org.im4java.process.ProcessStarter;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,6 +39,7 @@ public class MagickGuiDisplay extends JPanel
 
     public MagickGuiDisplay()
     {
+
         cards = new JPanel(new CardLayout());
 
         cards.add(cropPanel, "crop");

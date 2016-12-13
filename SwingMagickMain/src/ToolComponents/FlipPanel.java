@@ -50,6 +50,7 @@ public class FlipPanel extends JPanel{
 
         confirmButton = new JButton("Flip");
         confirmButton.setBackground(Color.GRAY);
+        confirmButton.setForeground(Color.WHITE);
 
         add(label);
         add(xAxisLabel);

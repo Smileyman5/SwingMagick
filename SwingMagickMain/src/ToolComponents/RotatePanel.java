@@ -68,6 +68,7 @@ public class RotatePanel extends JPanel {
 
         confirmButton = new JButton("Rotate");
         confirmButton.setBackground(Color.GRAY);
+        confirmButton.setForeground(Color.WHITE);
 
         add(label);
         add(rotateRight);
