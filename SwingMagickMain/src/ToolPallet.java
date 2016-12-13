@@ -51,6 +51,11 @@ public class ToolPallet extends JPanel
         undo.addListener(listener);
     }
 
+    public void reset()
+    {
+        undo.reset();
+    }
+
     public void addComponent(ToolComponent component)
     {
         System.out.println("Adding " +  component);

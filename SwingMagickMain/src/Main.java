@@ -60,11 +60,13 @@ public class Main
                             "Exiting Without Saving",
                             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)
                     {
+                        magickGuiDisplay.reset();
                         System.exit(0);
                     }
                 }
                 else
                 {
+                    magickGuiDisplay.reset();
                     System.exit(0);
                 }
 

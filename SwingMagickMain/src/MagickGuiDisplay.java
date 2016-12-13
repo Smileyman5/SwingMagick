@@ -28,7 +28,7 @@ public class MagickGuiDisplay extends JPanel
     private CenterStage stage;
 
     private JPanel cards;
-    private JPanel cropPanel = new CropPanel();
+    private CropPanel cropPanel = new CropPanel();
     private JPanel filterPanel = new FilterPanel();
     private JPanel flipPanel = new FlipPanel();
     private JPanel resizePanel = new ResizePanel();
@@ -273,6 +273,8 @@ public class MagickGuiDisplay extends JPanel
             if (!toolName.equals("save") && !toolName.equals("undo")) {
                 CardLayout cl1 = (CardLayout)(cards.getLayout());
                 cl1.show(cards, toolName);
+                if (!toolName.equals("ancestor"))
+                    cropPanel.displaying = toolName.equals("crop");
             } else if (toolName.equals("save")) {
                 //save function going here! :P
                 try
@@ -302,7 +304,7 @@ public class MagickGuiDisplay extends JPanel
             }
         });
 
-        stage = new CenterStage();
+        stage = new CenterStage(cropPanel);
         add(stage, "grow, cell 1 2");
     }
 
@@ -358,5 +360,10 @@ public class MagickGuiDisplay extends JPanel
         menu.add(menuItem);
         menuBar.setMinimumSize(new Dimension(20, 20));
         return menuBar;
+    }
+
+    public void reset()
+    {
+        pallet.reset();
     }
 }

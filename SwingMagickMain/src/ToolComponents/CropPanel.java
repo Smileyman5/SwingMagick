@@ -15,10 +15,12 @@ import java.util.Locale;
  * The JPanel containing the options for the crop tool
  */
 public class CropPanel extends JPanel{
-    private JTextField startXField;
-    private JTextField startYField;
-    private JTextField endXField;
-    private JTextField endYField;
+    public boolean displaying;
+
+    public JTextField startXField;
+    public JTextField startYField;
+    public JTextField endXField;
+    public JTextField endYField;
 
     private JLabel propertyTypeLabel;
     private JLabel coordStartLabel;
@@ -30,6 +32,7 @@ public class CropPanel extends JPanel{
 
     public CropPanel () {
 
+        displaying = true;
         NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.getDefault());
         DecimalFormat decimalFormat = (DecimalFormat) numberFormat;
         decimalFormat.setGroupingUsed(false);

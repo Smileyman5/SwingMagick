@@ -1,4 +1,5 @@
 import CenterStageComponents.CenterStageProperties;
+import ToolComponents.CropPanel;
 import net.miginfocom.swing.MigLayout;
 
 import javax.imageio.ImageIO;
@@ -21,7 +22,7 @@ public class CenterStage extends JPanel
 //    private JLabel image2;
     private JScrollPane scrollPane;
 
-    public CenterStage()
+    public CenterStage(CropPanel cropPanel)
     {
         setBackground(Color.DARK_GRAY);
         imageFilename = "out/images/nature2";
@@ -66,7 +67,7 @@ public class CenterStage extends JPanel
 
         setLayout(new MigLayout("", "[grow]", "[grow][]"));
         add (scrollPane, "grow, wrap");
-        add (new CenterStageProperties(scrollPane, imageLabel), "growx");
+        add (new CenterStageProperties(scrollPane, imageLabel, cropPanel), "growx");
     }
 
     /**

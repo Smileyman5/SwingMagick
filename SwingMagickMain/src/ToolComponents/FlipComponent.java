@@ -12,13 +12,15 @@ import java.beans.PropertyChangeListener;
 public class FlipComponent extends ToolComponent {
 
     private CustomButton flipButton;
+    private String[] imageDir;
 
     public FlipComponent()
     {
         setLayout(new MigLayout());
-        flipButton = new CustomButton("./out/images/flip.png", "flip");
-        flipButton.setRolloverIcon(new ImageIcon("./out/images/flip-hover.png"));
-        flipButton.setPressedIcon(new ImageIcon("./out/images/flip-clicked.png"));
+        imageDir = new String[]{"./out/images/flip.png", "./out/images/flip-hover.png", "./out/images/flip-clicked.png"};
+        flipButton = new CustomButton(imageDir[0], "flip");
+        flipButton.setRolloverIcon(new ImageIcon(imageDir[1]));
+        flipButton.setPressedIcon(new ImageIcon(imageDir[2]));
         add(flipButton);
         flipButton.setToolTipText("Flip the image on an axis.");
     }
