@@ -38,12 +38,20 @@ public class RotatePanel extends JPanel {
         rotateRight = new JRadioButton("Rotate Clockwise      ");
         rotateRight.setBackground(Color.DARK_GRAY);
         rotateRight.setForeground(Color.WHITE);
+        rotateRight.setIcon(new ImageIcon("./out/images/deselectedradio.png"));
+        rotateRight.setSelectedIcon(new ImageIcon("./out/images/selectedradio.png"));
+
         rotateLeft = new JRadioButton("Rotate Counterclockwise      ");
         rotateLeft.setBackground(Color.DARK_GRAY);
         rotateLeft.setForeground(Color.WHITE);
+        rotateLeft.setIcon(new ImageIcon("./out/images/deselectedradio.png"));
+        rotateLeft.setSelectedIcon(new ImageIcon("./out/images/selectedradio.png"));
+
         rotate180 = new JRadioButton("Rotate 180 Degrees");
         rotate180.setBackground(Color.DARK_GRAY);
         rotate180.setForeground(Color.WHITE);
+        rotate180.setIcon(new ImageIcon("./out/images/deselectedradio.png"));
+        rotate180.setSelectedIcon(new ImageIcon("./out/images/selectedradio.png"));
 
         rotationSettings = new ButtonGroup();
         rotationSettings.add(rotateLeft);
