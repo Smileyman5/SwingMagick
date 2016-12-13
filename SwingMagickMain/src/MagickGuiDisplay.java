@@ -7,6 +7,7 @@ import org.im4java.process.ProcessStarter;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -337,27 +338,61 @@ public class MagickGuiDisplay extends JPanel
         menu.add(menuItem); //note: before defining the next menu item, define its action listener.
         menuItem = new JMenuItem("Save");
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try
+                {
+                    BufferedImage temp = ImageIO.read(stage.getCurrentImage());
+                    ImageIO.write(temp, "jpg", FileManager.MAIN_FILE.getFile());
+                    stage.refresh();
+                    lastCommand = "save";
+                } catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        });
         menu.add(menuItem);
         menu.addSeparator();
         menuItem = new JMenuItem("Exit");
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if (!getLastCommand().equals("save"))
+                {
+                    if(JOptionPane.showConfirmDialog(MagickGuiDisplay.this,
+                            "Are you sure you want to quit without saving?",
+                            "Exiting Without Saving",
+                            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)
+                    {
+                        System.exit(0);
+                    }
+                }
+                else
+                {
+                    System.exit(0);
+                }
+            }
+        });
         menu.add(menuItem);
-        menu = new JMenu("Edit");
-        menuBar.add(menu);
-        menuItem = new JMenuItem("Undo");
-        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK));
-        menu.add(menuItem);
-        menuItem = new JMenuItem("Redo");
-        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK+ InputEvent.SHIFT_MASK));
-        menu.add(menuItem);
-        menu = new JMenu("View");
-        menuBar.add(menu);
-        menuItem = new JMenuItem("Display Preferences");
-        menu.add(menuItem);
-        menu = new JMenu("Help");
-        menuBar.add(menu);
-        menuItem = new JMenuItem("About");
-        menu.add(menuItem);
+//        menu = new JMenu("Edit");
+//        menuBar.add(menu);
+//        menuItem = new JMenuItem("Undo");
+//        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK));
+//        menu.add(menuItem);
+//        menuItem = new JMenuItem("Redo");
+//        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK+ InputEvent.SHIFT_MASK));
+//        menu.add(menuItem);
+//        menu = new JMenu("View");
+//        menuBar.add(menu);
+//        menuItem = new JMenuItem("Display Preferences");
+//        menu.add(menuItem);
+//        menu = new JMenu("Help");
+//        menuBar.add(menu);
+//        menuItem = new JMenuItem("About");
+//        menu.add(menuItem);
         menuBar.setMinimumSize(new Dimension(20, 20));
         return menuBar;
     }
@@ -365,5 +400,9 @@ public class MagickGuiDisplay extends JPanel
     public void reset()
     {
         pallet.reset();
+    }
+
+    private String getLastCommand() {
+        return lastCommand;
     }
 }

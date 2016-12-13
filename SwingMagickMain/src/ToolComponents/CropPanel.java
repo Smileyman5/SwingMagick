@@ -53,18 +53,23 @@ public class CropPanel extends JPanel{
         startXField = new JFormattedTextField(decimalFormat);
         startXField.setColumns(6);
         startXField.setBackground(Color.GRAY);
+        startXField.setForeground(Color.WHITE);
         endXField = new JFormattedTextField(decimalFormat);
         endXField.setColumns(6);
         endXField.setBackground(Color.GRAY);
+        endXField.setForeground(Color.WHITE);
         startYField = new JFormattedTextField(decimalFormat);
         startYField.setColumns(6);
         startYField.setBackground(Color.GRAY);
+        startYField.setForeground(Color.WHITE);
         endYField = new JFormattedTextField(decimalFormat);
         endYField.setColumns(6);
         endYField.setBackground(Color.GRAY);
+        endYField.setForeground(Color.WHITE);
 
         confirmButton = new JButton("Crop");
         confirmButton.setBackground(Color.GRAY);
+        confirmButton.setForeground(Color.WHITE);
 
         add(propertyTypeLabel);
         add(startXField);

@@ -63,8 +63,12 @@ public class ResizePanel extends JPanel {
         aspectRatioBox.setBackground(Color.DARK_GRAY);
         aspectRatioBox.setForeground(Color.WHITE);
 
+        aspectRatioBox.setIcon(new ImageIcon("./out/images/deselectedbox.png"));
+        aspectRatioBox.setSelectedIcon(new ImageIcon("./out/images/selectedbox.png"));
+
         confirmButton = new JButton("Resize");
         confirmButton.setBackground(Color.GRAY);
+        confirmButton.setForeground(Color.WHITE);
 
         add(propertyTypeLabel);
         add(xLabel);

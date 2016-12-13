@@ -38,6 +38,7 @@ public class FilterPanel extends JPanel {
 
         confirmButton = new JButton("Apply Filter");
         confirmButton.setBackground(Color.GRAY);
+        confirmButton.setForeground(Color.WHITE);
 
         add(propertyLabel);
         add(comboBoxLabel);

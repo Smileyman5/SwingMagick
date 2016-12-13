@@ -35,14 +35,22 @@ public class FlipPanel extends JPanel{
         flipXAxisBox = new JCheckBox();
         flipXAxisBox.setBackground(Color.DARK_GRAY);
         flipXAxisBox.setForeground(Color.WHITE);
+
+        flipXAxisBox.setIcon(new ImageIcon("./out/images/deselectedbox.png"));
+        flipXAxisBox.setSelectedIcon(new ImageIcon("./out/images/selectedbox.png"));
+
         yAxisLabel = new JLabel("      Flip on Y-Axis");
         yAxisLabel.setForeground(Color.WHITE);
         flipYAxisBox = new JCheckBox();
         flipYAxisBox.setBackground(Color.DARK_GRAY);
         flipYAxisBox.setForeground(Color.WHITE);
 
+        flipYAxisBox.setIcon(new ImageIcon("./out/images/deselectedbox.png"));
+        flipYAxisBox.setSelectedIcon(new ImageIcon("./out/images/selectedbox.png"));
+
         confirmButton = new JButton("Flip");
         confirmButton.setBackground(Color.GRAY);
+        confirmButton.setForeground(Color.WHITE);
 
         add(label);
         add(xAxisLabel);
