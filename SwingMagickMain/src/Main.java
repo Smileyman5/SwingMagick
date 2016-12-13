@@ -54,19 +54,19 @@ public class Main
             {
                 super.windowClosing(e);
                 if (!magickGuiDisplay.lastCommand.equals("save"))
-                {
-                    if(JOptionPane.showConfirmDialog(magickGuiDisplay,
-                            "Are you sure you want to quit without saving?",
-                            "Exiting Without Saving",
-                            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)
-                    {
-                        System.exit(0);
-                    }
-                }
-                else
+            {
+                if(JOptionPane.showConfirmDialog(magickGuiDisplay,
+                        "Are you sure you want to quit without saving?",
+                        "Exiting Without Saving",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)
                 {
                     System.exit(0);
                 }
+            }
+            else
+            {
+                System.exit(0);
+            }
 
             }
         });
